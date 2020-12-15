@@ -16,18 +16,27 @@ public class MySocket extends Thread {
         input = new BufferedReader(inStream);
 
         OutputStreamWriter outStream = new OutputStreamWriter(socket.getOutputStream());
-        PrintWriter output = new PrintWriter(new BufferedWriter(outStream), true);
+        output = new PrintWriter(new BufferedWriter(outStream), true);
     }
 
-    public void close() throws IOException {
-        socket.close();
+    public void close() {
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void write(String str){
         output.println(str);
     }
 
-    public String read() throws IOException {
-        return input.readLine();
+    public String read() {
+        try {
+            return input.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

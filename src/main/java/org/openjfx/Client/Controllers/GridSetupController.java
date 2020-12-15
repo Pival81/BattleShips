@@ -8,17 +8,18 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import org.openjfx.Client.App;
 import com.google.gson.Gson;
+import org.openjfx.Utils.Utils;
 
 
 import java.io.IOException;
 
-public class PrimaryController {
+public class GridSetupController {
 
     @FXML GridPane griglia;
     @FXML Button submit;
     @FXML Label label;
     SimpleIntegerProperty integerProperty = new SimpleIntegerProperty(10);
-    boolean[][] battleshipGrid = new boolean[10][10];
+    public static boolean[][] battleshipGrid = new boolean[10][10];
 
     @FXML
     public void initialize() throws IOException {
@@ -27,10 +28,11 @@ public class PrimaryController {
         for (int i=0;i<10;i++){
             for (int j=0;j<10;j++){
                 var fxmlLoader = new FXMLLoader(App.class.getResource("button.fxml"));
-                Button btn = fxmlLoader.load();
-                var controller = fxmlLoader.<ButtonController>getController();
-                controller.setPos(i, j);
+                var controller = new ButtonController();
+                controller.setPos(j, i);
                 controller.setPriController(this);
+                fxmlLoader.setController(controller);
+                Button btn = fxmlLoader.load();
                 griglia.add(btn, i, j);
             }
         }
@@ -41,7 +43,6 @@ public class PrimaryController {
     }
 
     public void submit() {
-        var json = new Gson().toJson(battleshipGrid);
-        App.socket.write("submit:" + json);
+        App.socket.write(Utils.toJson(battleshipGrid));
     }
 }

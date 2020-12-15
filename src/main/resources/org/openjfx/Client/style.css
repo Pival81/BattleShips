@@ -1,19 +1,25 @@
-#button.selected {
+#button.selected, #button.hit {
     -fx-background-color: #0f0;
 }
 
-#button.hovered {
-    -fx-background-color: rgba(0, 255, 0, .4);
-}
-
-#button.hovered.selected {
-    -fx-background-color: rgb(255, 0, 0);
-}
 
 #button {
     -fx-background-color: #fff;
     -fx-border-color:black;
     -fx-border-width: 1;
+}
+
+#button.hit {
+    -fx-background-color: #0f0;
+}
+
+#button.miss, #button.hitmine {
+    -fx-background-color: #f00;
+}
+
+
+#button.missmine {
+    -fx-background-color: #686868;
 }
 
 #label {

@@ -1,4 +1,6 @@
 package org.openjfx.Utils;
+import com.google.gson.Gson;
+
 import static java.lang.System.out;
 
 public class Utils {
@@ -13,5 +15,13 @@ public class Utils {
             out.println();
         }
         out.println();
+    }
+
+    public static String toJson(boolean[][] array){
+        return new Gson().toJson(array);
+    }
+
+    public static boolean[][] fromJson(String str){
+        return new Gson().fromJson(str, new boolean[][]{}.getClass());
     }
 }

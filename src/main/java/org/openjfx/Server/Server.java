@@ -1,6 +1,5 @@
 package org.openjfx.Server;
 
-import org.openjfx.GameLogic;
 import org.openjfx.Utils.MySocket;
 
 import java.io.IOException;
@@ -22,6 +21,8 @@ public class Server {
                 return;
             }
             game.addPlayer(socket);
+            if (game.isGameFull())
+                game.start();
         }
     }
 }
