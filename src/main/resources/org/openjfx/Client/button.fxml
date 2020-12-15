@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.Button?>
+
+<Button fx:id="button" stylesheets="@style.css" onAction="#onClick" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.Client.Controllers.ButtonController">
+    <minHeight>50</minHeight>
+    <maxHeight>50</maxHeight>
+    <minWidth>50</minWidth>
+    <maxWidth>50</maxWidth>
+</Button>

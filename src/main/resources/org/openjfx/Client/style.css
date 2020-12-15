@@ -1,0 +1,21 @@
+#button.selected {
+    -fx-background-color: #0f0;
+}
+
+#button.hovered {
+    -fx-background-color: rgba(0, 255, 0, .4);
+}
+
+#button.hovered.selected {
+    -fx-background-color: rgb(255, 0, 0);
+}
+
+#button {
+    -fx-background-color: #fff;
+    -fx-border-color:black;
+    -fx-border-width: 1;
+}
+
+#label {
+    -fx-font-size: 20px;
+}
