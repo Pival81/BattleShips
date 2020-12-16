@@ -1,0 +1,20 @@
+<component name="ArtifactManager">
+  <artifact type="javafx" build-on-make="true" name="battleship">
+    <output-path>$PROJECT_DIR$/out/artifacts/battleship</output-path>
+    <properties id="javafx-properties">
+      <options>
+        <option name="appClass" value="org.openjfx.Client.App" />
+        <option name="description" value="" />
+        <option name="htmlPlaceholderId" value="" />
+        <option name="title" value="Battleships" />
+        <option name="vendor" value="" />
+        <option name="version" value="0.1.0" />
+      </options>
+    </properties>
+    <root id="root">
+      <element id="archive" name="battleship.jar">
+        <element id="module-output" name="battleship" />
+      </element>
+    </root>
+  </artifact>
+</component>

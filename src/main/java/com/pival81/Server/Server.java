@@ -1,6 +1,6 @@
-package org.openjfx.Server;
+package com.pival81.Server;
 
-import org.openjfx.Utils.MySocket;
+import com.pival81.Utils.MySocket;
 
 import java.io.IOException;
 import java.net.ServerSocket;

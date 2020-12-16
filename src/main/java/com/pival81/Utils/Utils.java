@@ -1,4 +1,4 @@
-package org.openjfx.Utils;
+package com.pival81.Utils;
 import com.google.gson.Gson;
 
 import static java.lang.System.out;

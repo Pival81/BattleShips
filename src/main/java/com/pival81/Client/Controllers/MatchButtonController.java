@@ -1,8 +1,8 @@
-package org.openjfx.Client.Controllers;
+package com.pival81.Client.Controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import org.openjfx.Client.App;
+import com.pival81.Client.App;
 
 public class MatchButtonController {
 

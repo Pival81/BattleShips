@@ -1,4 +1,4 @@
-package org.openjfx.Client.Controllers;
+package com.pival81.Client.Controllers;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
@@ -6,9 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import org.openjfx.Client.App;
-import com.google.gson.Gson;
-import org.openjfx.Utils.Utils;
+import com.pival81.Client.App;
+import com.pival81.Utils.Utils;
 
 
 import java.io.IOException;

@@ -1,10 +1,11 @@
-package org.openjfx.Client;
+package com.pival81.Client;
 
+import javafx.application.Platform;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import org.openjfx.Client.Controllers.GridSetupController;
-import org.openjfx.Client.Controllers.MatchController;
-import org.openjfx.Utils.MySocket;
+import com.pival81.Client.Controllers.GridSetupController;
+import com.pival81.Client.Controllers.MatchController;
+import com.pival81.Utils.MySocket;
 import static java.lang.System.out;
 
 
@@ -22,31 +23,44 @@ public class ClientSocketHandlerThread extends Thread {
             response = socket.read();
             switch (response){
                 case "STAGE1": {
-                    App.setRoot("gridsetup");
+                    Platform.runLater(() -> {
+                        App.setRoot("gridsetup");
+                        App.pack.run();
+                    });
                     out.println("stage1");
                     break;
                 }
                 case "STAGE2": {
                     MatchController.grid = GridSetupController.battleshipGrid;
-                    App.setRoot("match");
+                    Platform.runLater(() -> {
+                        App.setRoot("match");
+                        App.pack.run();
+                    });
                     out.println("stage2");
                     break;
                 }
                 case "URTURN": {
                     MatchController.isDisabled.set(false);
+                    MatchController.myTurn.set(true);
                     out.println("urturn");
                     break;
                 }
                 case "WON": {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "You won!");
-                    alert.showAndWait();
+                    Platform.runLater(() -> {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION, "You won!");
+                        alert.showAndWait();
+                    });
                     MatchController.isDisabled.set(true);
+                    MatchController.gameFinished.set(true);
                     break;
                 }
                 case "LOST": {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "You lost!");
-                    alert.showAndWait();
+                    Platform.runLater(() -> {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION, "You lost!");
+                        alert.showAndWait();
+                    });
                     MatchController.isDisabled.set(true);
+                    MatchController.gameFinished.set(true);
                     break;
                 }
                 default: {
@@ -54,7 +68,7 @@ public class ClientSocketHandlerThread extends Thread {
                         var split = response.split(":");
                         var x = Integer.parseInt(split[1]);
                         var y = Integer.parseInt(split[2]);
-                        var btn = (Button) MatchController.opponent.getChildren().get(x * 10 + y);
+                        var btn = (Button) App.matchController.opponent.getChildren().get(x * 10 + y);
                         btn.disableProperty().unbind();
                         btn.setDisable(true);
                         btn.getStyleClass().add(response.startsWith("HIT:") ? "hit" : "miss");
@@ -63,7 +77,7 @@ public class ClientSocketHandlerThread extends Thread {
                         var split = response.split(":");
                         var x = Integer.parseInt(split[1]);
                         var y = Integer.parseInt(split[2]);
-                        var btn = (Button) MatchController.mine.getChildren().get(x * 10 + y);
+                        var btn = (Button) App.matchController.mine.getChildren().get(x * 10 + y);
                         btn.disableProperty().unbind();
                         btn.setDisable(true);
                         btn.getStyleClass().add(response.startsWith("HITMINE:") ? "hitmine" : "missmine");

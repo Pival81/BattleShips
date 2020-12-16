@@ -1,12 +1,13 @@
-package org.openjfx.Client;
+package com.pival81.Client;
 
+import com.pival81.Client.Controllers.MatchController;
+import com.pival81.Utils.MySocket;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.stage.Stage;
-import org.openjfx.Utils.MySocket;
 
 import java.io.IOException;
 import java.net.ConnectException;
@@ -18,9 +19,11 @@ import java.net.Socket;
  */
 public class App extends Application {
 
-    private static Scene scene;
+    public static Scene scene;
     public static MySocket socket;
     public static ClientSocketHandlerThread clientSocketHandler;
+    public static MatchController matchController;
+    public static Runnable pack;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -34,14 +37,12 @@ public class App extends Application {
             alert.showAndWait();
             return;
         }
+        pack = () -> stage.sizeToScene();
         scene = new Scene(loadFXML("lobby"));
         stage.setScene(scene);
+        stage.setResizable(false);
         stage.setOnCloseRequest(e -> {
-            try {
-                stop();
-            } catch (Exception exception) {
-                exception.printStackTrace();
-            }
+            System.exit(0);
         });
         stage.show();
     }

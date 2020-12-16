@@ -1,12 +1,13 @@
-package org.openjfx.Client.Controllers;
+package com.pival81.Client.Controllers;
 
-import javafx.beans.property.BooleanProperty;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
-import org.openjfx.Client.App;
+import com.pival81.Client.App;
 
 import java.io.IOException;
 
@@ -14,12 +15,20 @@ public class MatchController {
 
     public static boolean[][] grid = new boolean[][]{};
 
-    @FXML public static GridPane mine;
-    @FXML public static GridPane opponent;
+    @FXML public GridPane mine;
+    @FXML public GridPane opponent;
+    @FXML public Label turn;
     public static SimpleBooleanProperty isDisabled = new SimpleBooleanProperty(true);
+    public static SimpleBooleanProperty myTurn = new SimpleBooleanProperty(false);
+    public static SimpleBooleanProperty gameFinished = new SimpleBooleanProperty(false);
 
     @FXML
     public void initialize() throws IOException {
+        App.matchController = this;
+        turn.textProperty().bind(Bindings.createStringBinding(() -> {
+            return myTurn.getValue() ? "Your turn" : "Opponent's turn";
+        }));
+        turn.visibleProperty().bind(gameFinished.not());
         for (int i=0;i<10;i++){
             for (int j=0;j<10;j++){
                 {

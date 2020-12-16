@@ -1,4 +1,4 @@
-package org.openjfx.Client.Controllers;
+package com.pival81.Client.Controllers;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;

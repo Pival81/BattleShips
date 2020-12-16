@@ -1,4 +1,4 @@
-package org.openjfx.Utils;
+package com.pival81.Utils;
 
 import java.io.*;
 import java.net.Socket;

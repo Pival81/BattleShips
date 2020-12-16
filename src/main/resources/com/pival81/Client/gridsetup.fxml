@@ -5,11 +5,11 @@
 <?import javafx.scene.layout.HBox?>
 
 <?import javafx.scene.control.Button?>
-<VBox alignment="CENTER" stylesheets="@style.css" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.Client.Controllers.GridSetupController">
+<VBox alignment="CENTER" stylesheets="@style.css" spacing="20.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.pival81.Client.Controllers.GridSetupController">
    <children>
       <GridPane fx:id="griglia"/>
       <HBox alignment="CENTER">
-         <Label fx:id="label"/>
+         <Label styleClass="label" fx:id="label"/>
          <Button fx:id="submit" onAction="#submit">Submit</Button>
       </HBox>
    </children>
