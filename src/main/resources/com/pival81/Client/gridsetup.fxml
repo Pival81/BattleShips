@@ -9,7 +9,7 @@
    <children>
       <GridPane fx:id="griglia"/>
       <HBox alignment="CENTER">
-         <Label styleClass="label" fx:id="label"/>
+         <Label fx:id="label"/>
          <Button fx:id="submit" onAction="#submit">Submit</Button>
       </HBox>
    </children>

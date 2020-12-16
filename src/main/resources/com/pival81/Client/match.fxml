@@ -9,6 +9,6 @@
       alignment="CENTER"
       stylesheets="@style.css">
         <GridPane fx:id="mine"/>
-        <Label styleClass="label" fx:id="turn"/>
+        <Label fx:id="turn"/>
         <GridPane fx:id="opponent"/>
 </VBox>
