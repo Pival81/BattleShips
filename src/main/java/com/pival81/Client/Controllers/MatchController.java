@@ -27,7 +27,7 @@ public class MatchController {
         App.matchController = this;
         turn.textProperty().bind(Bindings.createStringBinding(() -> {
             return myTurn.getValue() ? "Your turn" : "Opponent's turn";
-        }));
+        }, myTurn));
         turn.visibleProperty().bind(gameFinished.not());
         for (int i=0;i<10;i++){
             for (int j=0;j<10;j++){

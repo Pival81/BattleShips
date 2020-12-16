@@ -15,6 +15,7 @@ public class MatchButtonController {
         button.setOnAction( e -> {
             App.socket.write(x+":"+y);
             MatchController.isDisabled.set(true);
+            MatchController.myTurn.set(false);
         });
     }
 

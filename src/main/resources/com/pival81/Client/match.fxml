@@ -6,6 +6,7 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.pival81.Client.Controllers.MatchController"
       spacing="20"
+      alignment="CENTER"
       stylesheets="@style.css">
         <GridPane fx:id="mine"/>
         <Label styleClass="label" fx:id="turn"/>

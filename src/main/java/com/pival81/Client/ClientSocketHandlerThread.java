@@ -41,7 +41,9 @@ public class ClientSocketHandlerThread extends Thread {
                 }
                 case "URTURN": {
                     MatchController.isDisabled.set(false);
-                    MatchController.myTurn.set(true);
+                    Platform.runLater(() -> {
+                        MatchController.myTurn.set(true);
+                    });
                     out.println("urturn");
                     break;
                 }

@@ -27,7 +27,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        try {
+        /*try {
             Socket _socket = new Socket(InetAddress.getLocalHost(), 6239);
             socket = new MySocket(_socket);
             clientSocketHandler = new ClientSocketHandlerThread(socket);
@@ -36,7 +36,7 @@ public class App extends Application {
             Alert alert = new Alert(Alert.AlertType.ERROR, "Server doesn't seem to respond");
             alert.showAndWait();
             return;
-        }
+        }*/
         pack = () -> stage.sizeToScene();
         scene = new Scene(loadFXML("lobby"));
         stage.setScene(scene);
