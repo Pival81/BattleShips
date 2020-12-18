@@ -28,7 +28,7 @@ public class GridSetupController {
             for (int j=0;j<10;j++){
                 var fxmlLoader = new FXMLLoader(App.class.getResource("button.fxml"));
                 var controller = new ButtonController();
-                controller.setPos(j, i);
+                controller.setPos(i, j);
                 controller.setPriController(this);
                 fxmlLoader.setController(controller);
                 Button btn = fxmlLoader.load();

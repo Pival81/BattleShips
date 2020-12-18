@@ -49,20 +49,20 @@ public class ClientSocketHandlerThread extends Thread {
                 }
                 case "WON": {
                     Platform.runLater(() -> {
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION, "You won!");
-                        alert.showAndWait();
+                        MatchController.quest.setLabel("You won!");
                     });
                     MatchController.isDisabled.set(true);
                     MatchController.gameFinished.set(true);
+                    socket.close();
                     break;
                 }
                 case "LOST": {
                     Platform.runLater(() -> {
-                        Alert alert = new Alert(Alert.AlertType.INFORMATION, "You lost!");
-                        alert.showAndWait();
+                        MatchController.quest.setLabel("You lost!");
                     });
                     MatchController.isDisabled.set(true);
                     MatchController.gameFinished.set(true);
+                    socket.close();
                     break;
                 }
                 default: {

@@ -14,6 +14,7 @@ import java.io.IOException;
 public class MatchController {
 
     public static boolean[][] grid = new boolean[][]{};
+    public static MatchController quest;
 
     @FXML public GridPane mine;
     @FXML public GridPane opponent;
@@ -24,11 +25,9 @@ public class MatchController {
 
     @FXML
     public void initialize() throws IOException {
+        quest = this;
         App.matchController = this;
-        turn.textProperty().bind(Bindings.createStringBinding(() -> {
-            return myTurn.getValue() ? "Your turn" : "Opponent's turn";
-        }, myTurn));
-        turn.visibleProperty().bind(gameFinished.not());
+        turn.textProperty().bind(Bindings.createStringBinding(() -> myTurn.getValue() ? "Your turn" : "Opponent's turn", myTurn));
         for (int i=0;i<10;i++){
             for (int j=0;j<10;j++){
                 {
@@ -37,7 +36,7 @@ public class MatchController {
                     controller1.setPos(i, j);
                     fxmlLoader.setController(controller1);
                     Button btn = fxmlLoader.load();
-                    btn.disableProperty().bind(isDisabled);
+                    btn.disableProperty().bind(Bindings.and(isDisabled, gameFinished.not()));
                     opponent.getChildren();
                     opponent.add(btn, i, j);
                 }
@@ -50,5 +49,10 @@ public class MatchController {
                 }
             }
         }
+    }
+
+    public void setLabel(String str){
+        turn.textProperty().unbind();
+        turn.setText(str);
     }
 }

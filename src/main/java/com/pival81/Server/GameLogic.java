@@ -64,6 +64,7 @@ public class GameLogic extends Thread {
         }
         player1.socket.write(player2.points == 0 ? "WON" : "LOST");
         player2.socket.write(player1.points == 0 ? "WON" : "LOST");
+        System.exit(0);
     }
 
     public void playerMove(Player pl1, Player pl2, int x, int y){

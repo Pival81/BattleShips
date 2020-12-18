@@ -16,11 +16,14 @@
     -fx-background-color: #f00;
 }
 
-
 #button.missmine {
     -fx-background-color: #686868;
 }
 
 .label {
     -fx-font-size: 20px;
+}
+
+.button:disabled {
+    -fx-opacity : 1;
 }
