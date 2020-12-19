@@ -8,13 +8,26 @@ import java.net.Socket;
 
 public class Server {
 
-    public static void main(String[] args) throws IOException {
-        ServerSocket server = new ServerSocket(6239);
+    public static void main(String[] args) {
+        ServerSocket server = null;
+        try {
+            server = new ServerSocket(6239);
+        } catch (IOException e) {
+            e.printStackTrace();
+            return;
+        }
         GameLogic game = new GameLogic();
 
         while(true){
-            Socket _socket = server.accept();
-            MySocket socket = new MySocket(_socket);
+            Socket _socket = null;
+            MySocket socket = null;
+            try {
+                _socket = server.accept();
+                socket = new MySocket(_socket);
+            } catch (IOException e) {
+                e.printStackTrace();
+                return;
+            }
             if(game.isGameFull()){
                 socket.write("gamefull");
                 socket.close();

@@ -6,6 +6,7 @@ module com.pival81.Client {
     requires com.google.gson;
     requires org.jfxtras.styles.jmetro;
 
+    opens com.pival81 to javafx.graphics;
     opens com.pival81.Client.Controllers to javafx.fxml;
     exports com.pival81.Client;
 }
